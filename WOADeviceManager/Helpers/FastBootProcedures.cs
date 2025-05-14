@@ -231,7 +231,7 @@ namespace WOADeviceManager.Helpers
                     StorageFile file = await picker.PickSingleFileAsync();
                     if (file != null && File.Exists(file.Path))
                     {
-                        TWRPFile = file.Path;
+                        TWRP = file;
                     }
                 }
                 else
@@ -314,6 +314,11 @@ namespace WOADeviceManager.Helpers
                 else
                 {
                     throw new Exception("Unknown device product");
+                }
+
+                if (UEFIFile == null)
+                {
+                    throw new Exception("Unknown file path");
                 }
 
                 MainPage.SetStatus("Rebooting the device to Windows mode...", Emoji: "🔄️");
